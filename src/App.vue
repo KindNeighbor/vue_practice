@@ -1,8 +1,7 @@
 <template>
   <div class="black-bg" v-if="modalCheck === true">
     <div class="white-bg">
-      <h4>상세페이지</h4>
-      <p>상세페이지내용임</p>
+      <p>{{products[selectedData].content}}</p>
       <button @click="modalCheck = false">닫기</button>
     </div>
   </div>
@@ -13,9 +12,8 @@
   <br/>
   <div v-for="(item, i) in products" :key="i" class="product-item">
     <img :src="products[i].image" class="room-img">
-    <h4 @click="modalCheck = true">{{products[i].title}}</h4>
-    <p>{{products[i].price}} 원</p>
-    <div>{{products[i].content}}</div>
+    <h4 @click="modalCheck = true; selectedData = i">{{products[i].title}}</h4>
+    <p>{{products[i].price}}</p>
     <br/>
     <button @click="increase(i)">신고</button>
     <span>신고수 : {{reports[i]}}</span>
@@ -33,7 +31,8 @@ export default {
       prices: [100, 200, 300],
       menus: ['Home', 'Shop', 'About'],
       reports : [0, 0, 0],
-      modalCheck : false
+      modalCheck : false,
+      selectedData : -1
     }
   },
 
