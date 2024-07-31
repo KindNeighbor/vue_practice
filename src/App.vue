@@ -1,7 +1,10 @@
 <template>
   <div class="black-bg" v-if="modalCheck === true">
     <div class="white-bg">
+      <img :src="products[selectedData].image" class="room-img">
+      <h4>{{products[selectedData].title}}</h4>
       <p>{{products[selectedData].content}}</p>
+      <p>{{products[selectedData].price}}</p>
       <button @click="modalCheck = false">닫기</button>
     </div>
   </div>
@@ -11,7 +14,7 @@
   </div>
   <br/>
   <div v-for="(item, i) in products" :key="i" class="product-item">
-    <img :src="products[i].image" class="room-img">
+    <img @click="modalCheck = true; selectedData = i" :src="products[i].image" class="room-img">
     <h4 @click="modalCheck = true; selectedData = i">{{products[i].title}}</h4>
     <p>{{products[i].price}}</p>
     <br/>
@@ -56,6 +59,7 @@ body {
 
 div {
   box-sizing: border-box;
+  place-items: center;
 }
 
 .black-bg {
@@ -68,17 +72,21 @@ div {
   width: 100%; background: white;
   border-radius: 8px;
   padding: 20px;
+  text-align: center;
 }
 
 .product-item {
   margin-bottom: 100px;
+  text-align: center;
 }
 
 .menu {
   background : darkslateblue;
   padding : 15px;
   border-radius : 5px;
+  text-align: center;
 }
+
 .menu a {
   color : white;
   padding : 10px;
