@@ -4,7 +4,9 @@
       <img :src="product.image" class="room-img2">
       <h4>{{ product.title }}</h4>
       <p>{{ product.content }}</p>
-      <p>{{ product.price }}</p>
+      <input v-model="month">
+<!--      <input @input="month = $event.target.value">-->
+      <p>{{ month }} 개월 선택함 : {{ product.price * month}} 원</p>
       <button @click="$emit('close')">닫기</button>
     </div>
   </div>
@@ -14,6 +16,24 @@
 
 export default {
   name: 'Modal',
+  data() {
+    return {
+      month: 1
+    }
+  },
+  watch : {
+    month(a) {
+      if (a > 12 || a <= 0) {
+        alert('1 ~ 12 사잇값만 입력해주세요.');
+        this.month = 1;
+      }
+
+      if (isNaN(a) == true) {
+        alert('숫자만 입력해주세요.');
+        this.month = 1;
+      }
+    }
+  },
   props: {
     show: {
       type: Boolean,
