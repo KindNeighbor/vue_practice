@@ -1,6 +1,11 @@
 <script>
+import Modal from './Modal.vue';
+
 export default {
-  name: 'ProductComponent',
+  name: 'Product',
+  components: {
+    Modal
+  },
   props: {
     products: {
       type: Array,
@@ -28,15 +33,11 @@ export default {
 
 <template>
   <div>
-    <div v-if="modalCheck" class="black-bg">
-      <div class="white-bg">
-        <img :src="products[selectedData].image" class="room-img2">
-        <h4>{{ products[selectedData].title }}</h4>
-        <p>{{ products[selectedData].content }}</p>
-        <p>{{ products[selectedData].price }}</p>
-        <button @click="modalCheck = false">닫기</button>
-      </div>
-    </div>
+    <Modal
+        :show="modalCheck"
+        :product="products[selectedData]"
+        @close="modalCheck = false"
+    />
     <div v-for="(item, i) in products" :key="i" class="product-item">
       <img @click="showModal(i)" :src="products[i].image" class="room-img">
       <h4 @click="showModal(i)">{{ products[i].title }}</h4>

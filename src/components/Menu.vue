@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'MenuComponent',
+  name: 'Menu',
   props: {
     menus: {
       type: Array,
