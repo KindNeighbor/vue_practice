@@ -4,7 +4,7 @@
     <br/>
     <Discount/>
     <br/>
-    <Product :products="products"/>
+    <Product :products="products" @priceSort="priceSort" @sortBack="sortBack"/>
   </div>
 </template>
 
@@ -24,7 +24,18 @@ export default {
   data() {
     return {
       products: roomData,
+      originalProducts: [...roomData],
       menus: ['Home', 'Shop', 'About']
+    }
+  },
+  methods: {
+    sortBack() {
+      this.products = [...this.originalProducts];
+    },
+    priceSort() {
+      this.products.sort((a, b) => {
+        return a.price - b.price;
+      });
     }
   }
 }
