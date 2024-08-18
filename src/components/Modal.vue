@@ -23,7 +23,7 @@ export default {
   },
   watch : {
     month(a) {
-      if (a > 12 || a < 0) {
+      if (a > 12 || a <= 0) {
         alert('1 ~ 12 사잇값만 입력해주세요.');
         this.month = 1;
       }
