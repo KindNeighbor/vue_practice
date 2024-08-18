@@ -1,5 +1,5 @@
 {
-  "name": "vue_practice",
+  "name": "vue_practice_2",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "bootstrap": "^5.3.3",
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
-    "vite": "^5.3.5"
+    "vite": "^5.3.1"
   }
 }
